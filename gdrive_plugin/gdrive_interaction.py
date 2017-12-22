@@ -107,7 +107,7 @@ class GDriveConnect(object):
             if page_token is None:
                 break;
 
-    def download_image(self, image):
+    def download_image(self, image, pre_path="./"):
         """download an image using the corresponding file metadata
         """
         image_hash = image["id"]
@@ -119,7 +119,43 @@ class GDriveConnect(object):
         done = False
         while done is False:
             status, done = downloader.next_chunk()
-            print("Download {}%.".format(int(status.progress() * 100)))
+            print("Download {} {}%.".format(os.path.join(pre_path, image_name), int(status.progress() * 100)))
 
-        with open(image_name, "wb") as img:
+        with open(os.path.join(pre_path, image_name), "wb") as img:
             img.write(fh.getvalue())
+
+    def download_deployment_images(self, deployment, main_project_folder, nlim=None):
+        """download all images of a specific deployment
+
+        Parameters
+        ----------
+        deployment : dict
+            gdirve API provided folder metadeta dict, e.g. 
+                {'id': '0B4xlTsZWnBR9eThfenBnYWNGOUk',
+                'kind': 'drive#file',
+                'mimeType': 'application/vnd.google-apps.folder',
+                'name': 'f9484c4e-20d0-4af9-a084-c3702d37e282'}
+        main_project_folder : str
+            local folder to store the images 
+        nlim : int
+            testing purposes, limit the number of processed images
+        """
+
+        deployment_hash = deployment['name']
+        for j, image in enumerate(self.list_deployment_images(deployment['id'])):
+
+            image_name = image['name']
+            local_image_path = os.path.join(main_project_folder, deployment_hash, image_name)
+
+            # create new directory for deployment
+            if not os.path.isdir(os.path.dirname(local_image_path)):
+                os.mkdir(os.path.dirname(local_image_path))
+
+            # download image if not already stored
+            if not os.path.isfile(local_image_path):
+                self.download_image(image, pre_path=os.path.dirname(local_image_path))   
+
+            #limit in handling, mainly for testing
+            if nlim:
+                if j + 1 >= nlim:
+                    break   
