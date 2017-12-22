@@ -107,7 +107,7 @@ class GDriveConnect(object):
             if page_token is None:
                 break;
 
-    def download_image(self, image):
+    def download_image(self, image, pre_path="./"):
         """download an image using the corresponding file metadata
         """
         image_hash = image["id"]
@@ -121,5 +121,5 @@ class GDriveConnect(object):
             status, done = downloader.next_chunk()
             print("Download {}%.".format(int(status.progress() * 100)))
 
-        with open(image_name, "wb") as img:
+        with open(os.path.join(pre_path, image_name), "wb") as img:
             img.write(fh.getvalue())
