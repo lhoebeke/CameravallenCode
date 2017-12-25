@@ -31,7 +31,7 @@ def download_gdrive(credentials, gdrive_hash, local_dir, nlim):
         click.echo("Handling deployment {}...".format(deployment["name"]))
         gconnect.download_deployment_images(deployment, 
                                             local_dir, 
-                                            nlim=nlim)
+                                            nlim=int(nlim))
 
 if __name__ == "__main__":
     sys.exit(download_gdrive())
