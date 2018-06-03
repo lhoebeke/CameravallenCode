@@ -1,0 +1,8 @@
+general_folder_path :               '../data/raw'                           # Orginal camera trap images and the Agouti export files
+resized_folder_path :               '../data/interim/resized'               # Resized images
+preprocessing_output_path :         '../data/interim/preprocessing'         # Preprocessing output
+crop_output_path :                  '../data/interim/crop'                  # Cropped images (optional)
+draw_output_path :                  '../data/interim/draw'                  # Regions of interest indicated on camera trap images (optional)
+bottleneck_features_output_path :   '../data/interim/bottleneck_features'   # Extracted bottleneck features
+weight_path :                       '../src/weights'                        # Weights top model
+predictions_output_path :           '../data/processed'                     # Predictions
