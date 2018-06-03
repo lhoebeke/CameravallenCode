@@ -1,6 +1,8 @@
 # CameravallenCode
 
-This repository contains the code from my masterthesis 'Automated recognition of people and identification of animal species in camera trap images'. <br>
+This repository contains the code from my master thesis 'Automated recognition of people and identification of animal species in camera trap images'. In this master thesis, existing manually labelled images from a camera trap study conducted by the Research Institute for Nature and Forest in collaboration with Hasselt University are used to train a convolutional neural network to hierarchically classify
+camera trap images.<br>
+
 You can either use the trained network to classify new sequences or retrain the network yourself.
 
 ## A. Use the network to hierarchically classify new sequences
