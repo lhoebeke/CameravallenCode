@@ -10,7 +10,7 @@ from keras import optimizers
 from keras.models import Sequential
 from keras.layers import Dropout, Flatten, Dense, Lambda
 
-from Network.Functions_Network import (load_train_val_test,
+from network.functions_network import (load_train_val_test,
                                        compute_weights,
                                        split_mammals,
                                        convert_cond_probabilities)
@@ -75,9 +75,9 @@ history = top_model.fit(bottleneck_features_train, train_labels,
           validation_data=(bottleneck_features_validation, validation_labels),class_weight=weights)
 
 #Save model, weights and history
-top_model.save_weights(os.path.join(config['weight_path'], 'ResNet_bottleneck_weights.h5'))
-top_model.save(os.path.join(config['weight_path'], 'ResNet50_bottleneck_model.h5'))
-with open(os.path.join(config['weight_path'],'trainHistoryDict'), 'wb') as file_pi:
+top_model.save_weights(os.path.join(config['weight_path'], 'nesnet_bottleneck_weights.h5'))
+top_model.save(os.path.join(config['weight_path'], 'resnet50_bottleneck_model.h5'))
+with open(os.path.join(config['weight_path'],'train_history_dict'), 'wb') as file_pi:
     pickle.dump(history.history, file_pi)
 
 #Predict and save pedictions for validation and test data

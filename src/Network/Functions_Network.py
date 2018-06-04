@@ -16,7 +16,7 @@ import keras.backend as K
 from keras.preprocessing.image import img_to_array, random_shift, random_rotation, random_shear, random_zoom #Additional data augmentation option. Add to DataGenerator.
 from keras.applications.resnet50 import preprocess_input
 
-from Preprocessing.Def_Functions import black_border
+from preprocessing.def_functions import black_border
 
 ############################################################################################
 def randomHorizontalFlip(image, p=0.5):

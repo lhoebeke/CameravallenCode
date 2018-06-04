@@ -7,7 +7,7 @@ from yaml import load
 from sklearn.preprocessing import LabelEncoder
 from keras.applications import ResNet50
 
-from Network.Functions_Network import (group_birds, 
+from network.functions_network import (group_birds, 
                                        DataGenerator, 
                                        split_train_val_test_bottleneck)
 

@@ -3,7 +3,7 @@ from ast import literal_eval
 import pandas as pd
 from PIL import Image, ImageDraw
 
-from Preprocessing.Def_Functions import black_border
+from preprocessing.def_functions import black_border
 
 
 def draw_boxes(preprocessing_output_path, resized_folder_path, draw_output_path):

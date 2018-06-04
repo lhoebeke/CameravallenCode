@@ -11,7 +11,7 @@ from keras.models import Sequential
 from keras.layers import Dropout, Flatten, Dense, Lambda
 from keras.applications import ResNet50
 
-from Network.Functions_Network import (split_train_val_test,
+from network.functions_network import (split_train_val_test,
                                        load_train_val_test,
                                        compute_weights,
                                        split_mammals,
@@ -89,9 +89,9 @@ history = model.fit_generator(train_generator, steps_per_epoch=train_steps_per_e
                               validation_data=test_generator, validation_steps=val_steps_per_epoch, class_weight=class_weights)
 
 #Save model, weights and history
-model.save_weights(os.path.join(config['weight_path'], 'ResNet50_augmentation_weights.h5'))
-model.save(os.path.join(config['weight_path'], 'ResNet50_augmentation_model.h5'))
-with open(os.path.join(config['weight_path'],'trainHistoryDict'), 'wb') as file_pi:
+model.save_weights(os.path.join(config['weight_path'], 'resnet50_augmentation_weights.h5'))
+model.save(os.path.join(config['weight_path'], 'resnet50_augmentation_model.h5'))
+with open(os.path.join(config['weight_path'],'train_history_dict'), 'wb') as file_pi:
     pickle.dump(history.history, file_pi)
 
 #Predict and save prediction validation and test data

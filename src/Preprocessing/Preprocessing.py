@@ -8,7 +8,7 @@ from skimage.filters import roberts
 from scipy import ndimage as ndi
 import cv2
 
-from Preprocessing.Def_Functions import remove_dup_columns, black_border, standard_box, size_box, devide_box
+from preprocessing.def_functions import remove_dup_columns, black_border, standard_box, size_box, devide_box
 
 
 def preprocessing(general_folder_path, resized_folder_path, preprocessing_output_path):
@@ -41,7 +41,7 @@ def preprocessing(general_folder_path, resized_folder_path, preprocessing_output
     #Import Agouti export files
     observations = pd.read_csv(os.path.join(general_folder_path, 'observations.csv'))
     assets = pd.read_csv(os.path.join(general_folder_path, 'assets.csv'), low_memory = False)
-    setup = pd.read_csv(os.path.join(general_folder_path, '20171130_HogeKempen_Blank_SetupPickup.csv'), sep = ';')
+    setup = pd.read_csv(os.path.join(general_folder_path, 'pickup_setup.csv'), sep = ';')
     
     #Combine annotations for sequences with multiple annotations
     list_columns = ['animalCount','animalTaxonID','animalIsDomesticated','animalScientificName','animalVernacularName','animalSex','animalAge', 'animalBehavior', 'deploymentID']

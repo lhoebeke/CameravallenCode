@@ -6,7 +6,7 @@ import numpy as np
 from sklearn.preprocessing import LabelEncoder
 from keras.applications import ResNet50
 
-from Network.Functions_Network import group_birds, DataGenerator
+from network.functions_network import group_birds, DataGenerator
 
 
 def extract_bottleneck_features(preprocessing_output_path, bottleneck_features_output_path, resized_folder_path):

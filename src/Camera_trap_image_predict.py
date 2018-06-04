@@ -3,11 +3,11 @@ import click
 from yaml import load
 import os
 
-from Preprocessing.Resize_images import resize_images
-from Preprocessing.Preprocessing import preprocessing
-from Network.ResNet50_Bottleneck_Features_Predict import extract_bottleneck_features
-from Network.ResNet50_Hierarchical_Bottleneck_Predict import hierarchical_bottleneck_predict
-from Network.Hierachical_processing_predictions import hierarchical_predictions_sequences
+from preprocessing.resize_images import resize_images
+from preprocessing.preprocessing import preprocessing
+from network.resnet50_bottleneck_features_predict import extract_bottleneck_features
+from network.resNet50_hierarchical_bottleneck_predict import hierarchical_bottleneck_predict
+from network.hierachical_processing_predictions import hierarchical_predictions_sequences
 
 @click.command()
 @click.argument("configuration_file")

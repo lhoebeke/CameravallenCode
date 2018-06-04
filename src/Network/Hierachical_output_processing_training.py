@@ -7,14 +7,14 @@ from yaml import load
 
 from sklearn.metrics import accuracy_score, confusion_matrix
 
-from Network.Functions_Output_training import *
+from network.functions_output_training import *
 
 # Load configuration file
 with open("config.yml") as yaml_config:
     config = load(yaml_config)
     
 # Import data
-history = pickle.load(open(os.path.join(config['weight_path'], 'trainHistoryDict'), "rb" ))
+history = pickle.load(open(os.path.join(config['weight_path'], 'train_history_dict'), "rb" ))
 test_data = pd.read_csv(config['predictions_output_path'] +'test_data.csv', sep = ';')
 predictions = pd.read_csv(config['predictions_output_path'] +'test_predictions.csv', sep = ';')
 data = pd.concat([test_data, predictions], axis=1)

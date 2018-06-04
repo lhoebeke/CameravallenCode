@@ -11,7 +11,7 @@ from keras import optimizers
 from keras.models import Sequential
 from keras.layers import Dropout, Flatten, Dense, Lambda
 
-from Network.Functions_Network import (load_train_val_test,
+from network.functions_network import (load_train_val_test,
                                        compute_weights,
                                        split_mammals,
                                        convert_cond_probabilities,
@@ -57,7 +57,7 @@ top_model.add(Dropout(0.50))
 top_model.add(Dense(cond_classes, activation='sigmoid'))
 top_model.add(Lambda(split_mammals,name='cond_layer'))
 top_model.add(Lambda(convert_cond_probabilities))
-top_model.load_weights(os.path.join(config['weight_path'],'ResNet_bottleneck_weights.h5'), by_name=False)
+top_model.load_weights(os.path.join(config['weight_path'],'resnet_bottleneck_weights.h5'), by_name=False)
 
 conv_base = ResNet50(include_top=False, weights='imagenet', input_shape=(270, 480, 3)) #Pretrained base
 conv_base.trainable = True #Unfreeze convolutional base to finetune
@@ -101,9 +101,9 @@ history = model.fit_generator(train_generator, steps_per_epoch=train_steps_per_e
                               validation_data=val_generator, validation_steps=val_steps_per_epoch, class_weight=class_weights)
 
 #Safe history, model and weights.
-model.save_weights(os.path.join(config['weight_path'], 'ResNet50_finetune_weights.h5'))
-model.save(os.path.join(config['weight_path'], 'ResNet50_finetune_model.h5'))
-with open(os.path.join(config['weight_path'],'trainHistoryDict'), 'wb') as file_pi:
+model.save_weights(os.path.join(config['weight_path'], 'resnet50_finetune_weights.h5'))
+model.save(os.path.join(config['weight_path'], 'resnet50_finetune_model.h5'))
+with open(os.path.join(config['weight_path'],'train_history_dict'), 'wb') as file_pi:
     pickle.dump(history.history, file_pi)
 
 #Predict and save prediction validation and test data

@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-from Network.Functions_Output import (hierarchical_predictions, 
+from network.functions_output import (hierarchical_predictions, 
                                       bottom_hierarchical_prediction,
                                       top_predictions)
 
