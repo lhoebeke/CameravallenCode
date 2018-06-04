@@ -1,19 +1,59 @@
-# CameravallenCode
+# Camera traps recognition and identification
 
-This repository contains the code from my master thesis 'Automated recognition of people and identification of animal species in camera trap images'. In this master thesis, existing manually labelled images from a camera trap study conducted by the Research Institute for Nature and Forest in collaboration with Hasselt University are used to train a convolutional neural network to hierarchically classify
-camera trap images.<br>
+This repository contains the code from my master thesis 'Automated recognition of people and identification of animal species in camera trap images'. In this master thesis, existing manually labelled images from a camera trap study conducted by the Research Institute for Nature and Forest (INBO) in collaboration with Hasselt University are used to train a convolutional neural network to hierarchically classify camera trap images.
 
-You can either use the trained network to classify new sequences or retrain the network yourself.
+You can either use the trained network to classify new sequences or retrain the network itself.
+
+## Setting up environment
+
+The code is written in Python and the working environment with the required packages can be set up using the `environment.yml` file. To prepare and setup the environment with the command line (see also [here](https://conda.io/docs/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file)):
+
+```
+conda env create -f environment.yml
+```
+or [use the Anaconda navigator functionality](https://docs.anaconda.com/anaconda/navigator/tutorials/manage-environments#importing-an-environment) to load the `environment.yml` file.
 
 ## A. Use the network to hierarchically classify new sequences
+
+### Configurations
+
+All input and output paths are listed in the file `config.yml`. You can either use the predefined paths or change them according to your own data structure. This repo assumes the following data structure:
+
+```
+data 
+  ├─ raw  # Orginal camera trap images and the Agouti export files
+      ├─ observations.csv
+      ├─ assets.csv
+      ├─ pickup_setup.csv
+      └─ deployment_hash_1
+           ├─ photo_1
+           ├─ ...
+      ├─ ...
+      └─ deployment_hash_n
+           ├─ photo_1
+           ├─ ...
+  ├─ interim
+      ├─ resized
+      ├─ preprocessing
+      ├─ crop
+      ├─ draw
+      └─ bottleneck_features
+  ├─ processed
+      └─ hierarchical_predictions_sequences
+```
+__Remark:__ The interim subfolders are automatically when running the tutorial.
+
 ### Tutorial
-`Tutorial_predictions.ipynb` contains a short tutorial on how you can use the network to classify new sequences.
+
+The jupyter notebook `Tutorial_predictions.ipynb` contains a short tutorial on how you can use the network to classify new sequences.
+
 ### Command line
-You can run `Camera_trap_image_predict.py` using the command line: <br>
-`python Camera_trap_image_predict.py --config.yml`
 
-All input and output paths are listed in `config.yml`. You can either use the predefined paths or change them according to your own data structure.
+The command line version combines all 5 steps in a single pipeline. You can run `Camera_trap_image_predict.py` using the command line:
 
+```
+python Camera_trap_image_predict.py --config.yml
+```
 
 ### To hierarchically classify new sequences, the following steps are executed:
 
