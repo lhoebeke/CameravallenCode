@@ -105,6 +105,4 @@ To fine-tune the model, run `ResNet50_Hierarchical_Finetune`. You can either use
 
 ## Contact
 
-The Lifewatch team of the Research Institute for Nature and Forest (INBO) supports the hardware infrastructure and access to the Agouti platform for Belgian partners. For more information, check the [cameratrap project page](http://cameratraps.inbo.be/) or contact directly [Jim Casaer](mailto:jim.casaer@inbo.be) for any questions about the hardware or the usage of the Agouti application.
-
-
+The Lifewatch team of the Research Institute for Nature and Forest (INBO) supports the hardware infrastructure and access to the Agouti platform for Belgian partners. For more information, check the [cameratrap project page](http://cameratraps.inbo.be/) or contact directly [Jim Casaer](mailto:jim.casaer@inbo.be) for any questions about the hardware or the usage of the Agouti application. For any data-related questions, take contact with [team Lifewatch](mailto:team_lifewatch@inbo.be).
