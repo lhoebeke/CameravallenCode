@@ -102,3 +102,9 @@ To fine-tune the model, run `ResNet50_Hierarchical_Finetune`. You can either use
 
 **4. Evaluate the performance of the retrained network** <br>
 `Hierachical_output_processing_training.py`can be used to evaluate the performance of the network. This script allows you to aggregate the predictions of the individual images to a hierarchical label for the sequence. Code to plot the training history and confusion matrices is also provided.
+
+## Contact
+
+The Lifewatch team of the Research Institute for Nature and Forest (INBO) supports the hardware infrastructure and access to the Agouti platform for Belgian partners. For more information, check the [cameratrap project page](http://cameratraps.inbo.be/) or contact directly [Jim Casaer](mailto:jim.casaer@inbo.be) for any questions about the hardware or the usage of the Agouti application.
+
+
