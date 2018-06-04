@@ -1,6 +1,6 @@
 # Camera traps recognition and identification
 
-This repository contains the code from my master thesis 'Automated recognition of people and identification of animal species in camera trap images'. In this master thesis, existing manually labelled images from a camera trap study conducted by the Research Institute for Nature and Forest (INBO) in collaboration with Hasselt University are used to train a convolutional neural network to hierarchically classify camera trap images.
+This repository contains the code from my master thesis 'Automated recognition of people and identification of animal species in camera trap images'. In this master thesis, existing manually labelled images from a camera trap study conducted by the Research Institute for Nature and Forest (INBO) in collaboration with Hasselt University are used to train a convolutional neural network to hierarchically classify camera trap images. The data used for the training has been annotated using [Agouti](https://www.agouti.eu/), a platform for managing wildlife camera-trapping projects.
 
 You can either use the trained network to classify new sequences or retrain the network itself.
 
