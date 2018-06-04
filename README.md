@@ -41,18 +41,18 @@ data
   ├─ processed
       └─ hierarchical_predictions_sequences
 ```
-__Remark:__ The interim subfolders are automatically when running the tutorial.
+__Remark:__ The interim subfolders are automatically created when running the tutorial.
 
 ### Tutorial
 
-The jupyter notebook `Tutorial_predictions.ipynb` contains a short tutorial on how you can use the network to classify new sequences.
+The jupyter notebook `tutorial_predictions.ipynb` contains a short tutorial on how you can use the network to classify new sequences.
 
 ### Command line
 
-The command line version combines all 5 steps in a single pipeline. You can run `Camera_trap_image_predict.py` using the command line:
+The command line version combines all 5 steps in a single pipeline. You can run `camera_trap_image_predict.py` using the command line:
 
 ```
-python Camera_trap_image_predict.py --config.yml
+python camera_trap_image_predict.py --config.yml
 ```
 
 ### To hierarchically classify new sequences, the following steps are executed:
@@ -85,24 +85,37 @@ Since this step uses the cropped images, make sure to first run the optional cro
 ## B. Retrain the convolutional neural network
 This repository also contains some scripts that can be used to retrain the convolutional network. These scripts also use the configuration file `config.yml`.
 
+### To retrain the neural network, execute the following steps:
+
 **1. Resize the original camera trap images** <br>
+The camera trap images are resized to 50% of their original size. This strongly decreases the computational time, while the performance remains the same. To resize the original camera trap images, run `resize_images.py`.
 
 **2. Preprocess the resized images** <br>
+During the preprocessing, the regions of interest in the images are determined. To apply the preprocessings steps run `preprocessing.py`.
 
 **3. Retrain the model** <br>
 
 **- Train model without data augmentation** <br>
-To train the model without data augmentation, first run `ResNet50_Bottleneck_Features.py` to extract the bottleneck features. Subsequently, run `ResNet50_Hierarchical_Bottleneck` to train the model.
+To train the model without data augmentation, first run `resnet50_bottleneck_features.py` to extract the bottleneck features. Subsequently, run `resnet50_hierarchical_bottleneck` to train the model.
 
 **- Train model with data augmentation** <br>
-To train the model with data augmentation, run `ResNet50_Hierarchical_Augmentation`. You can change the augmentation options in   `DataGenerator` in `Functions_Network.py`.
+To train the model with data augmentation, run `resnet50_hierarchical_augmentation`. You can change the augmentation options in   `DataGenerator` in `functions_network.py`.
 
 **- Fine-tuning** <br>
-To fine-tune the model, run `ResNet50_Hierarchical_Finetune`. You can either use the top weights provided in this repository or retrain the top before fine-tuning.
+To fine-tune the model, run `resnet50_hierarchical_finetune`. You can either use the top weights provided in this repository or retrain the top before fine-tuning.
 
 **4. Evaluate the performance of the retrained network** <br>
-`Hierachical_output_processing_training.py`can be used to evaluate the performance of the network. This script allows you to aggregate the predictions of the individual images to a hierarchical label for the sequence. Code to plot the training history and confusion matrices is also provided.
+`hierachical_output_processing_training.py`can be used to evaluate the performance of the network. This script allows you to aggregate the predictions of the individual images to a hierarchical label for the sequence. Code to plot the training history and confusion matrices is also provided.
 
 ## Contact
 
 The Lifewatch team of the Research Institute for Nature and Forest (INBO) supports the hardware infrastructure and access to the Agouti platform for Belgian partners. For more information, check the [cameratrap project page](http://cameratraps.inbo.be/) or contact directly [Jim Casaer](mailto:jim.casaer@inbo.be) for any questions about the hardware or the usage of the Agouti application. For any data-related questions, take contact with [team Lifewatch](mailto:team_lifewatch@inbo.be).
+
+<br>
+
+If you want to collaborate on the development or application of deep learning algorithms for species detection, feel free to contact [me](mailto:laura.hoebeke@ugent.be): <br>
+
+**Laura Hoebeke** <br>
+[KERMIT](http://www.kermit.ugent.be/), Research Unit Knowledge-Based Systems<br>
+Department of Data Analysis and Mathematical Modelling<br>
+Faculty of Bioscience Engineering, Ghent University<br>
